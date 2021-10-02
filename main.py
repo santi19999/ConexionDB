@@ -1,4 +1,5 @@
 import pymysql
+import pymysql.cursors
 
 class  DataBase(object):
 	"""docstring for  DataBase"""
@@ -47,6 +48,7 @@ class  DataBase(object):
 
 
 	def update(self, username,  id):
+
 		sql = "UPDATE  users SET username ='{}' WHERE id = {}".format(username, id) #utilizamos la funcion update para actualizar un registro de la base de datos
 
 		try:
@@ -56,10 +58,25 @@ class  DataBase(object):
 			raise e
 
 
+	def insert_new_user(self):
+		
+		sql = "INSERT INTO users (username,email) VALUES ('user1','user1@gmail.com')"
+
+		try:
+			self.cursor.execute(sql)
+			
+			self.cursor.close()
+		except Exception as e:
+			raise e
+
+
 
 database= DataBase()
-database.select_user(1)
-database.update('Cambio de nombre', 1)
-database.select_user(1)
+#database.select_user(1)
+#database.update('Cambio de nombre', 1)
+#database.select_user(1)
+database.insert_new_user()
+database.connection.commit()
+
 #database.select_all_user()
 
