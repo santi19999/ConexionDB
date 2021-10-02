@@ -58,16 +58,17 @@ class  DataBase(object):
 			raise e
 
 
-	def insert_new_user(self):
-		
-		sql = "INSERT INTO users (username,email) VALUES ('user1','user1@gmail.com')"
-
+	def insert_new_user(self,nombre,email):
+		print(nombre)
+		print(email)		
+		sql = "INSERT INTO users(username, email) VALUES ('{}','{}')".format(nombre,email)
 		try:
 			self.cursor.execute(sql)
 			
-			self.cursor.close()
+			
 		except Exception as e:
 			raise e
+
 
 
 
@@ -75,8 +76,18 @@ database= DataBase()
 #database.select_user(1)
 #database.update('Cambio de nombre', 1)
 #database.select_user(1)
-database.insert_new_user()
-database.connection.commit()
+#database.insert_new_user()
+opcion=int(input("1.Cargar Nuevo Usuario , 2.Salir :  "))
+print()
+if opcion == 1:
+	for a in range(1,2):
+		nomb=input("Ingresa tu Nombre de Usuario: ")
+		em= input("\n Ingresa tu email: ")
+		database.insert_new_user(nomb,em)
+
+	database.connection.commit()
+else:
+	print("Saliste del Programa")
 
 #database.select_all_user()
 
