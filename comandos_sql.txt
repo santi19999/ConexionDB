@@ -1,0 +1,1 @@
+ALTER TABLE tblname AUTO_INCREMENT = 0;
