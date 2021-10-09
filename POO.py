@@ -47,12 +47,20 @@ class Coche(object):
 
 
 print("-----------------Coche 1----------------------------")
+
 miCoche = Coche()    #Instaciar clase o crear un objeto coche
+
 print(miCoche.arrancar(True))
+
 miCoche.estado()
+
+
 print("-------------------Coche 2--------------------------")
+
 miCoche2 = Coche()
+
 print(miCoche2.arrancar(False))
+
 miCoche2.estado()
 
 
